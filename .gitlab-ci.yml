@@ -1,0 +1,22 @@
+image: node:18 
+
+stages:
+  - build
+#  - test Tester skal bli kjørt som et steg i pipelinen så fort de er skrevet
+
+before_script:
+  - cd storeway
+  - npm install 
+
+build:
+  stage: build
+  script:
+    - npm run build 
+  artifacts:
+    paths:
+      - dist/
+
+# test:
+#   stage: test
+#   script:
+#     - npm test # Tester skal bli kjørt som et steg i pipelinen så fort de er skrevet

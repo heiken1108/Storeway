@@ -6,8 +6,3 @@ cd storeway
 npm install
 npm run dev
 ```
-
-
-## Kjøring av Prettier
-
-npx prettier --write <targetFile>

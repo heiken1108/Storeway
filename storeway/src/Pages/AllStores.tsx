@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import {
 	QueryClient,
@@ -6,6 +6,8 @@ import {
 	useQuery,
 } from '@tanstack/react-query'
 import { Store } from '../lib/types'
+import Dropdown from '../Components/Dropdown'
+import { StoresDropdown } from '../data/Stores'
 
 
 export default function AllStores(){
@@ -20,11 +22,12 @@ const queryClient = new QueryClient()
 
 function GetStores() {
     const [stores, setStores] = useState<Store[]>([]);
+    const [URL, setURL] = useState('https://kassal.app/api/v1/physical-stores?size=100');
 
-  	const { isLoading} = useQuery({
+  	const { isLoading, refetch} = useQuery({
     	queryKey: ['Test'],
     	queryFn: () =>
-      		fetch('https://kassal.app/api/v1/physical-stores?size=100', {headers: {Authorization: 'Bearer eZPWuKmg1sPpchBhU4rsF6uAFICgyyBsHVs2Jaaw'}}).then(
+      		fetch(URL, {headers: {Authorization: 'Bearer eZPWuKmg1sPpchBhU4rsF6uAFICgyyBsHVs2Jaaw'}}).then(
         (res) => res.json(),
         ), onSuccess: (rawData: any) => {
             const allStores: Store[] = []
@@ -43,16 +46,28 @@ function GetStores() {
                 allStores.push(store);
             })
             setStores(allStores);
-        }, 
+        },
   	})
+
+    function handleStoreChange(storeName: string){
+        setURL('https://kassal.app/api/v1/physical-stores?size=100&group=' + storeName);
+        
+    }
+
+    useEffect(() => {
+        refetch();
+    }, [URL]);
     
   	if (isLoading) return 'Loading...'
 
 	return (
 		<div>
-            {stores.map((store) => (
-                <h1>{store.name}</h1>
-            ))}
+            <Dropdown stores={StoresDropdown} handleStoreChange={handleStoreChange}/>
+            <div>
+                {stores.map((store) => (
+                    <h1>{store.name}</h1>
+                ))}
+            </div>
         </div>
 	)
 }

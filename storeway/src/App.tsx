@@ -1,11 +1,16 @@
 import './App.css'
 import AllStores from './Pages/AllStores'
+import Header from './Components/Header'
 
 function App() {
   return (
-    <>
-      <AllStores/>
-    </>
+    <div className='main'>
+      <div>
+        <Header />
+      </div>
+      <AllStores />
+    </div>
+    
   )
 }
 

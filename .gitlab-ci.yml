@@ -8,6 +8,7 @@ before_script:
   - cd storeway
   - npm install 
   - npm install @tanstack/react-query
+  - npm install @tanstack/react-query-devtools
 
 build:
   stage: build

@@ -7,7 +7,8 @@ export interface Store {
     openingHours: OpeningHours,
     phone: string,
     position: Position,
-    website: string
+    website: string,
+    logo: string
 }
 
 interface OpeningHours {

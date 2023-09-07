@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import StoreCard from '../Components/StoreCard/StoreCard'
+import './AllStores.css'
 
 import {
 	QueryClient,
@@ -12,9 +14,11 @@ import { StoresDropdown } from '../data/Stores'
 
 export default function AllStores(){
     return (
-    	<QueryClientProvider client={queryClient}>
-    		<GetStores />
-    	</QueryClientProvider>
+        <>
+            <QueryClientProvider client={queryClient}>
+                <GetStores />
+            </QueryClientProvider>
+        </>
   	)
 }
 
@@ -41,7 +45,8 @@ function GetStores() {
                     openingHours: raw.openingHours,
                     phone: raw.phone,
                     position: raw.position,
-                    website: raw.website
+                    website: raw.website,
+                    logo: raw.logo
                 }
                 allStores.push(store);
             })
@@ -63,9 +68,9 @@ function GetStores() {
 	return (
 		<div>
             <Dropdown stores={StoresDropdown} handleStoreChange={handleStoreChange}/>
-            <div>
+            <div className='StoreCardContainer'> 
                 {stores.map((store) => (
-                    <h1>{store.name}</h1>
+                    <StoreCard key={store.id} city={store.address} name={store.name} logoSource={store.logo} />
                 ))}
             </div>
         </div>

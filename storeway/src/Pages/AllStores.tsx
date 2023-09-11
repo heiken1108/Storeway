@@ -26,7 +26,7 @@ const queryClient = new QueryClient()
 
 function GetStores() {
     const [stores, setStores] = useState<Store[]>([]);
-    const [URL, setURL] = useState('https://kassal.app/api/v1/physical-stores?size=100');
+    const [URL, setURL] = typeof(Storage) === "undefined" ? useState('https://kassal.app/api/v1/physical-stores?size=100') : useState('https://kassal.app/api/v1/physical-stores?size=100&group=' + localStorage.getItem("currentStoreCookie"));
 
   	const { isLoading, refetch} = useQuery({
     	queryKey: ['Test'],
@@ -55,15 +55,19 @@ function GetStores() {
   	})
 
     function handleStoreChange(storeName: string){
+        console.log("Stuker med handlestorechange")
         setURL('https://kassal.app/api/v1/physical-stores?size=100&group=' + storeName);
+        //Setter cookie ved endring
+        localStorage.setItem("currentStoreCookie",storeName);
         
     }
 
     useEffect(() => {
+        console.log("Setter igang første useeffekt");
         refetch();
     }, [URL]);
     
-  	if (isLoading) return 'Loading...'
+  	if (isLoading) return 'Laster inn...'
 
 	return (
 		<div>

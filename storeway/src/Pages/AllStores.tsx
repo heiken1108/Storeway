@@ -62,7 +62,6 @@ function GetStores() {
     }
 
     useEffect(() => {
-        console.log("Setter igang første useeffekt");
         refetch();
     }, [URL]);
     

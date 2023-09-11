@@ -1,3 +1,11 @@
+.Dropdowncontainer {
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 .StoreCardContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 

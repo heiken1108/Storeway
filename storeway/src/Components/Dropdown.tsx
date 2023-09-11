@@ -1,4 +1,5 @@
 import Select from 'react-select';
+import './Dropdown.css'
 
 interface IProps {
     stores: IStores[]
@@ -17,7 +18,7 @@ export default function Dropdown(props: IProps){
         props.handleStoreChange(option.value);
     }
     return (
-        <div>
+        <div className='dropdown'>
             <Select 
                 options={props.stores} 
                 onChange={handleSelectedStoreChange}

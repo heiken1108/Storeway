@@ -67,7 +67,13 @@ function GetStores() {
 
 	return (
 		<div>
-            <Dropdown stores={StoresDropdown} handleStoreChange={handleStoreChange}/>
+            <div className='Dropdowncontainer'>
+                
+                <Dropdown stores={StoresDropdown} handleStoreChange={handleStoreChange}/> 
+                <Dropdown stores={StoresDropdown} handleStoreChange={handleStoreChange}/>
+                <Dropdown stores={StoresDropdown} handleStoreChange={handleStoreChange}/>
+                <Dropdown stores={StoresDropdown} handleStoreChange={handleStoreChange}/>
+            </div>
             <div className='StoreCardContainer'> 
                 {stores.map((store) => (
                     <StoreCard key={store.id} city={store.address} name={store.name} logoSource={store.logo} />

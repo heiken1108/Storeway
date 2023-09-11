@@ -21,7 +21,17 @@ interface OpeningHours {
     sunday?: string
 }
 
-interface Position {
+export interface Position {
     lat: string,
     lng: string,
+}
+
+export interface IDropdownStore {
+    label: string,
+    value: string
+}
+
+export interface IDropdownCity {
+    label: string,
+    value: Position
 }

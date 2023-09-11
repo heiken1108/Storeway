@@ -1,28 +1,41 @@
 import Select from 'react-select';
 import './Dropdown.css'
+import { IDropdownCity, IDropdownStore } from '../lib/types';
 
 interface IProps {
-    stores: IStores[]
-    handleStoreChange: (arg0: string) => void
-}
-
-interface IStores{
-    label: string,
-    value: string
+    stores?: IDropdownStore[]
+    cities?: IDropdownCity[]
+    type: string
+    handleStoreChange?: (arg0: string) => void
+    handleCityChange?: (arg0: string) => void
 }
 
 export default function Dropdown(props: IProps){
-    //const [selectedValue, setSelectedValue] = useState("");
     function handleSelectedStoreChange(option: any){
-        //setSelectedValue(option.value);
-        props.handleStoreChange(option.value);
+        if (props.handleStoreChange){
+            props.handleStoreChange(option.value);
+        }
     }
+
+    function handleSelectedCityChange(option: any){
+        if (props.handleCityChange){
+            props.handleCityChange(option.value);
+        }
+    }
+    
     return (
         <div className='dropdown'>
-            <Select 
-                options={props.stores} 
-                onChange={handleSelectedStoreChange}
+            {props.type == "store" ? (
+                <Select 
+                    options={props.stores} 
+                    onChange={handleSelectedStoreChange}
                 />
+            ):(
+                <Select 
+                    options={props.cities} 
+                    onChange={handleSelectedCityChange}
+                />
+            )}
         </div>
     )
 }   

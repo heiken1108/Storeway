@@ -55,7 +55,6 @@ function GetStores() {
   	})
 
     function handleStoreChange(storeName: string){
-        console.log("Stuker med handlestorechange")
         setURL('https://kassal.app/api/v1/physical-stores?size=100&group=' + storeName);
         //Setter cookie ved endring
         localStorage.setItem("currentStoreCookie",storeName);

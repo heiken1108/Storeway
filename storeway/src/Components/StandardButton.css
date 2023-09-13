@@ -1,0 +1,26 @@
+.favouriteButton,
+.standardButton {
+    display: inline-block;
+    padding: 10px 20px; 
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    font-family: "Segoe UI", monospace;
+    font-weight: bold;
+    color: black;
+    font-size: 14px;
+    cursor: pointer;
+}
+.standard-button {
+    background-color: #c7b4b4;
+}
+.standardButton:hover {
+    background: #c3c2c2;
+}
+.favouriteButton {
+    background-color: rgb(246, 246, 12);
+}
+  
+.favouriteButton:hover {
+    background-color: #ffcc00; /* You can customize the hover color for the yellow button */
+}

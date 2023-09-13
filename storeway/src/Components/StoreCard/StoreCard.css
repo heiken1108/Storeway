@@ -1,4 +1,4 @@
-.mainBody {
+.backgroundBody {
     background-color: pink;
     height: auto;
     width: 200px;
@@ -6,9 +6,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     border: 0px solid black;
     box-shadow: 0px 0px 5px 0px gray;
+    z-index: 0;
 
 }
 .mainBody:hover {
@@ -22,17 +22,13 @@
 .mainBody * {
     width: 100%;
     text-align: center;
+    cursor: pointer;
 }
 .mainBody h3 {
-    font-size: 0.7rem;
+    user-select: none;
+    font-size: 1.2rem;
     padding: 0px;
     margin: 5px;
-}
-.nameTitle {
-
-}
-.cityTitle {
-    
 }
 
 .logoDiv {
@@ -41,7 +37,11 @@
 }
 
 .logoDiv img {
+    user-select: none;
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+.favoriteDiv {
+    cursor: pointer;
 }

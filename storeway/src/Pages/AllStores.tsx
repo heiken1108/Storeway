@@ -10,6 +10,7 @@ import {
 import { Store } from '../lib/types'
 import Dropdown from '../Components/Dropdown'
 import { StoresDropdown, CitiesDropdown } from '../data/Dropdown'
+import StandardButton from '../Components/StandardButton'
 
 export default function AllStores(){
     return (
@@ -32,6 +33,7 @@ function GetStores() {
         lat: '',
         lng: ''
     });
+    const [showFavourite, setShowFavourite] = useState(sessionStorage.getItem("FavouriteStores") === null ? false : sessionStorage.getItem("FavouriteStores") === "true" ? true : false);
 
   	const { isLoading, refetch} = useQuery({
     	queryKey: ['Test'],
@@ -55,9 +57,23 @@ function GetStores() {
                 }
                 allStores.push(store);
             })
-            setStores(allStores);
+            if (showFavourite){
+                showFavouriteStores(allStores);
+            } else {
+                setStores(allStores);
+            }
         },
   	})
+
+    function showFavouriteStores(allStores: Store[]){
+        const favouriteStores: Store[] = [];
+        allStores.map((store: Store) => {
+            if (localStorage.getItem(store.id.toString()) !== null){
+                favouriteStores.push(store);
+            }
+        })
+        setStores(favouriteStores);
+    }
 
     function handleStoreChange(selectedStoreName: string){
         setURL(kassalappURL + '&group=' + storeName);
@@ -79,9 +95,20 @@ function GetStores() {
         }
     }
 
+    function toggleFavourite(){
+        let showFavourite = sessionStorage.getItem("FavouriteStores") === null ? sessionStorage.setItem("FavouriteStores", "true") : sessionStorage.getItem("FavouriteStores");
+        if (showFavourite === "true"){
+            sessionStorage.setItem("FavouriteStores", "false");
+            setShowFavourite(false);
+        } else {
+            sessionStorage.setItem("FavouriteStores", "true");
+            setShowFavourite(true);
+        }
+    }
+
     useEffect(() => {
         refetch();
-    }, [URL]);
+    }, [URL, showFavourite]);
     
   	if (isLoading) return 'Laster inn...'
 
@@ -90,10 +117,11 @@ function GetStores() {
             <div className='Dropdowncontainer'>
                 <Dropdown stores={StoresDropdown} handleStoreChange={handleStoreChange} type={'store'}/> 
                 <Dropdown cities={CitiesDropdown} handleCityChange={handleCityChange} type={'city'}/>
+                <StandardButton text={'Favoritter'} state={showFavourite} handleClick={toggleFavourite}/>
             </div>
             <div className='StoreCardContainer'> 
                 {stores.map((store) => (
-                    <StoreCard key={store.id} city={store.address} name={store.name} logoSource={store.logo} id={store.id.toString()} />
+                    <StoreCard key={store.id} name={store.name} logoSource={store.logo} id={store.id.toString()} />
                 ))}
             </div>
         </div>

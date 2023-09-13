@@ -8,4 +8,5 @@
     font-size: calc(8px + 1vmin);
     color: black;
     font-family: "Segoe UI", monospace;
+    cursor: pointer;
 }

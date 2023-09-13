@@ -93,7 +93,7 @@ function GetStores() {
             </div>
             <div className='StoreCardContainer'> 
                 {stores.map((store) => (
-                    <StoreCard key={store.id} city={store.address} name={store.name} logoSource={store.logo} />
+                    <StoreCard key={store.id} city={store.address} name={store.name} logoSource={store.logo} id={store.id.toString()} />
                 ))}
             </div>
         </div>

@@ -1,6 +1,7 @@
 import Select from 'react-select';
 import './Dropdown.css'
-import { IDropdownCity, IDropdownStore } from '../lib/types';
+import { IDropdownCity, IDropdownStore } from '../../lib/types';
+import { getLabelFromLat, getLabelFromValue } from '../../data/Dropdown';
 
 interface IProps {
     stores?: IDropdownStore[]
@@ -8,6 +9,7 @@ interface IProps {
     type: string
     handleStoreChange?: (arg0: string) => void
     handleCityChange?: (arg0: string) => void
+    label: string | null
 }
 
 export default function Dropdown(props: IProps){
@@ -29,11 +31,13 @@ export default function Dropdown(props: IProps){
                 <Select 
                     options={props.stores} 
                     onChange={handleSelectedStoreChange}
+                    placeholder={getLabelFromValue(props.label, props.stores)}
                 />
             ):(
                 <Select 
                     options={props.cities} 
                     onChange={handleSelectedCityChange}
+                    placeholder={getLabelFromLat(props.label, props.cities)}
                 />
             )}
         </div>

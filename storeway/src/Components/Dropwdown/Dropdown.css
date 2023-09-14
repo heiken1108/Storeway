@@ -3,4 +3,5 @@
 }
 .dropdown {
     margin-right: calc(1.5rem - 1px);
+    width: calc(200px);
 }

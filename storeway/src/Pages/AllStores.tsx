@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react'
 import StoreCard from '../Components/StoreCard/StoreCard'
 import './AllStores.css'
-
 import {
 	QueryClient,
 	QueryClientProvider,
 	useQuery,
 } from '@tanstack/react-query'
 import { Store } from '../lib/types'
-import Dropdown from '../Components/Dropdown'
 import { StoresDropdown, CitiesDropdown } from '../data/Dropdown'
-import StandardButton from '../Components/StandardButton'
+import StandardButton from '../Components/Button/StandardButton'
+import Dropdown from '../Components/Dropwdown/Dropdown'
 
 export default function AllStores(){
     return (
@@ -26,13 +25,20 @@ const queryClient = new QueryClient()
 const kassalappURL = 'https://kassal.app/api/v1/physical-stores?size=100';
 
 function GetStores() {
+    let kassalappURLTemp = kassalappURL
     const [stores, setStores] = useState<Store[]>([]);
-    const [URL, setURL] = sessionStorage.getItem("currentStoreCookie") === null ? useState(kassalappURL) : useState(kassalappURL + '&group=' + sessionStorage.getItem("currentStoreCookie"));
+    if (sessionStorage.getItem("currentStoreCookie") !== null) {
+        kassalappURLTemp += '&group=' + sessionStorage.getItem("currentStoreCookie");
+    }
+    if (sessionStorage.getItem("currentLatCookie") !== null) {
+        kassalappURLTemp += '&lng=' + sessionStorage.getItem("currentLngCookie") + '&lat=' +  sessionStorage.getItem("currentLatCookie");
+    }
     const [storeName, setStorename] = useState("");
     const [position, setPoistion] = useState({
         lat: '',
         lng: ''
     });
+    const [URL, setURL] = useState(kassalappURLTemp);
     const [showFavourite, setShowFavourite] = useState(sessionStorage.getItem("FavouriteStores") === null ? false : sessionStorage.getItem("FavouriteStores") === "true" ? true : false);
 
   	const { isLoading, refetch} = useQuery({
@@ -78,21 +84,42 @@ function GetStores() {
     function handleStoreChange(selectedStoreName: string){
         setURL(kassalappURL + '&group=' + storeName);
         setStorename(selectedStoreName);
-        if (position.lat == ''){
-            setURL(kassalappURL + '&group=' +  selectedStoreName);
-        } else {
-            setURL(kassalappURL + '&group=' +  selectedStoreName + '&lat=' +  position.lat + '&lng=' + position.lng)
+        let urlParams = '';
+    
+        if (selectedStoreName !== '') {
+            urlParams += `&group=${selectedStoreName}`;
         }
-        sessionStorage.setItem("currentStoreCookie",storeName);
+    
+        if (position.lat !== '') {
+            urlParams += `&lat=${position.lat}&lng=${position.lng}`;
+        }
+    
+        setURL(kassalappURL + urlParams);
+    
+        if (selectedStoreName === '') {
+            sessionStorage.removeItem("currentStoreCookie");
+        } else {
+            sessionStorage.setItem("currentStoreCookie", selectedStoreName);
+        }
     }
 
-    function handleCityChange(position: any){
-        setPoistion(position);
-        if (storeName == ""){
-            setURL(kassalappURL + '&lat=' + position.lat + '&lng=' + position.lng);
-        } else {
-            setURL(kassalappURL + '&group=' + storeName + '&lat=' +  position.lat + '&lng=' + position.lng );
+    function handleCityChange(newPosition: any) {
+        setPoistion(newPosition);
+        let urlParams = '';
+    
+        if (storeName !== '') {
+            urlParams += `&group=${storeName}`;
         }
+    
+        if (newPosition.lat !== '') {
+            urlParams += `&lat=${newPosition.lat}&lng=${newPosition.lng}`;
+            sessionStorage.setItem('currentLatCookie', newPosition.lat);
+            sessionStorage.setItem('currentLngCookie', newPosition.lng);
+        } else {
+            sessionStorage.removeItem('currentLatCookie');
+            sessionStorage.removeItem('currentLngCookie');
+        }
+        setURL(kassalappURL + urlParams);
     }
 
     function toggleFavourite(){
@@ -115,8 +142,16 @@ function GetStores() {
 	return (
 		<div>
             <div className='Dropdowncontainer'>
-                <Dropdown stores={StoresDropdown} handleStoreChange={handleStoreChange} type={'store'}/> 
-                <Dropdown cities={CitiesDropdown} handleCityChange={handleCityChange} type={'city'}/>
+                <Dropdown 
+                    stores={StoresDropdown} 
+                    handleStoreChange={handleStoreChange} 
+                    type={'store'} 
+                    label={sessionStorage.getItem('currentStoreCookie')}/> 
+                <Dropdown 
+                    cities={CitiesDropdown} 
+                    handleCityChange={handleCityChange} 
+                    type={'city'}
+                    label={sessionStorage.getItem('currentLatCookie')}/>
                 <StandardButton text={'Favoritter'} state={showFavourite} handleClick={toggleFavourite}/>
             </div>
             <div className='StoreCardContainer'> 

@@ -26,7 +26,7 @@ export function getLabelFromValue(valueToFind: string | null, dropdownOptions: I
         const selectedOption = dropdownOptions.find(option => option.value === valueToFind);
         return selectedOption ? selectedOption.label : null;
     }
-    return "Velg by"
+    return "Velg butikk"
 }
 
 export function getLabelFromLat(latToFind: string | null, dropdownOptions: IDropdownCity[] | undefined){

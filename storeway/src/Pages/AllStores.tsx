@@ -40,6 +40,9 @@ function GetStores() {
     });
     const [URL, setURL] = useState(kassalappURLTemp);
     const [showFavourite, setShowFavourite] = useState(sessionStorage.getItem("FavouriteStores") === null ? false : sessionStorage.getItem("FavouriteStores") === "true" ? true : false);
+    const [favouriteStores, setFavouriteStores] = useState<Store[]>([]);
+
+
 
   	const { isLoading, refetch} = useQuery({
     	queryKey: ['Test'],
@@ -63,22 +66,20 @@ function GetStores() {
                 }
                 allStores.push(store);
             })
-            if (showFavourite){
-                showFavouriteStores(allStores);
-            } else {
-                setStores(allStores);
-            }
+            setStores(allStores);
+            addFavouriteStores(allStores);
+            
         },
   	})
 
-    function showFavouriteStores(allStores: Store[]){
-        const favouriteStores: Store[] = [];
+    function addFavouriteStores(allStores: Store[]){
+        const favourites: Store[] = [];
         allStores.map((store: Store) => {
             if (localStorage.getItem(store.id.toString()) !== null){
-                favouriteStores.push(store);
+                favourites.push(store);
             }
         })
-        setStores(favouriteStores);
+        setFavouriteStores(favourites);
     }
 
     function handleStoreChange(selectedStoreName: string){
@@ -130,12 +131,13 @@ function GetStores() {
         } else {
             sessionStorage.setItem("FavouriteStores", "true");
             setShowFavourite(true);
+            addFavouriteStores(stores);
         }
     }
 
     useEffect(() => {
         refetch();
-    }, [URL, showFavourite]);
+    }, [URL,]);
     
   	if (isLoading) return 'Laster inn...'
 
@@ -155,8 +157,12 @@ function GetStores() {
                 <StandardButton text={'Favoritter'} state={showFavourite} handleClick={toggleFavourite}/>
             </div>
             <div className='StoreCardContainer'> 
-                {stores.map((store) => (
+            {showFavourite
+                ? favouriteStores.map((store) => (
                     <StoreCard key={store.id} name={store.name} logoSource={store.logo} id={store.id.toString()} />
+                ))
+                : stores.map((store) => (
+                <StoreCard key={store.id} name={store.name} logoSource={store.logo} id={store.id.toString()} />
                 ))}
             </div>
         </div>

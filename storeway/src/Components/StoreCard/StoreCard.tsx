@@ -1,5 +1,5 @@
 import "./StoreCard.css"
-import Favorite from "../Favorite"
+import Favorite from "../Favorite/Favorite"
 import { useNavigate } from 'react-router-dom';
 
 

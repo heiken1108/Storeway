@@ -6,7 +6,7 @@ export interface Store {
     name: string
     openingHours: OpeningHours,
     phone: string,
-    position: Position,
+    position: {lat: string, lng: string},
     website: string,
     logo: string
 }
@@ -21,11 +21,6 @@ interface OpeningHours {
     sunday?: string
 }
 
-export interface Position {
-    lat: string,
-    lng: string,
-}
-
 export interface IDropdownStore {
     label: string,
     value: string
@@ -33,5 +28,5 @@ export interface IDropdownStore {
 
 export interface IDropdownCity {
     label: string,
-    value: Position
+    value: {lat: string, lng: string}
 }

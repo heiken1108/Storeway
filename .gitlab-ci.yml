@@ -6,7 +6,8 @@ stages:
 
 before_script:
   - cd storeway
-  - npm install 
+  - npm install
+  - npm i --save-dev @types/jest 
 
 build:
   stage: build

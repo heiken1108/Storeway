@@ -1,24 +1,29 @@
-image: node:18 
-
 stages:
-  - build
-#  - test Tester skal bli kjørt som et steg i pipelinen så fort de er skrevet
+  - Webapp build
+  - Webapp test
 
-before_script:
-  - cd storeway
-  - npm install 
-  - npm install @tanstack/react-query
-  - npm install @tanstack/react-query-devtools
-
-build:
-  stage: build
+cache:
+  paths:
+    - node_modules/
+Build:
+  stage: Webapp build
+  needs: []
   script:
-    - npm run build 
-  artifacts:
-    paths:
-      - dist/
+    - cd storeway
+    - npm install
+    - npm run build
+  retry: 1
 
-# test:
-#   stage: test
-#   script:
-#     - npm test # Tester skal bli kjørt som et steg i pipelinen så fort de er skrevet
+Prettier check:
+  stage: Webapp test
+  needs: [Build]
+  script:
+    - npm run prettier-check
+  retry: 1
+
+Eslint:
+  stage: Webapp test
+  needs: [Build]
+  script:
+    - npm run lint
+  retry: 1

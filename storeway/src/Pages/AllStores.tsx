@@ -2,29 +2,18 @@ import { useEffect, useState } from 'react'
 import StoreCard from '../Components/StoreCard/StoreCard'
 import './AllStores.css'
 import {
-	QueryClient,
-	QueryClientProvider,
 	useQuery,
 } from '@tanstack/react-query'
 import { Store } from '../lib/types'
 import { StoresDropdown, CitiesDropdown } from '../data/Dropdown'
 import StandardButton from '../Components/Button/StandardButton'
 import Dropdown from '../Components/Dropwdown/Dropdown'
+import FavoriteContainer from '../Components/FavoriteContainer/FavoriteContainer'
 
-export default function AllStores(){
-    return (
-        <>
-            <QueryClientProvider client={queryClient}>
-                <GetStores />
-            </QueryClientProvider>
-        </>
-  	)
-}
 
-const queryClient = new QueryClient()
 const kassalappURL = 'https://kassal.app/api/v1/physical-stores?size=100';
 
-function GetStores() {
+export default function AllStores() {
     let kassalappURLTemp = kassalappURL
     const [stores, setStores] = useState<Store[]>([]);
     if (sessionStorage.getItem("currentStoreCookie") !== null) {
@@ -40,18 +29,15 @@ function GetStores() {
     });
     const [URL, setURL] = useState(kassalappURLTemp);
     const [showFavourite, setShowFavourite] = useState(sessionStorage.getItem("FavouriteStores") === null ? false : sessionStorage.getItem("FavouriteStores") === "true" ? true : false);
-    const [favouriteStores, setFavouriteStores] = useState<Store[]>([]);
 
-
-
-  	const { isLoading, refetch} = useQuery({
-    	queryKey: ['Test'],
-    	queryFn: () =>
-      		fetch(URL, {headers: {Authorization: 'Bearer eZPWuKmg1sPpchBhU4rsF6uAFICgyyBsHVs2Jaaw'}}).then(
+    const { isLoading, refetch} = useQuery({
+        queryKey: ['Test'],
+        queryFn: () =>
+            fetch(URL, {headers: {Authorization: 'Bearer eZPWuKmg1sPpchBhU4rsF6uAFICgyyBsHVs2Jaaw'}}).then(
         (res) => res.json(),
-        ), onSuccess: (rawData: any) => {
+        ), onSuccess: (rawData) => {
             const allStores: Store[] = []
-            rawData.data.map((raw: any) => {
+            rawData.data.map((raw: { address: string; email: string; fax: string; id: number; name: string; openingHours: any; phone: string; position: {lat: string, lng: string}; website: string; logo: string }) => {
                 const store: Store = {
                     address: raw.address,
                     email: raw.email,
@@ -67,20 +53,8 @@ function GetStores() {
                 allStores.push(store);
             })
             setStores(allStores);
-            addFavouriteStores(allStores);
-            
         },
-  	})
-
-    function addFavouriteStores(allStores: Store[]){
-        const favourites: Store[] = [];
-        allStores.map((store: Store) => {
-            if (localStorage.getItem(store.id.toString()) !== null){
-                favourites.push(store);
-            }
-        })
-        setFavouriteStores(favourites);
-    }
+    })
 
     function handleStoreChange(selectedStoreName: string){
         setURL(kassalappURL + '&group=' + storeName);
@@ -124,22 +98,21 @@ function GetStores() {
     }
 
     function toggleFavourite(){
-        let showFavourite = sessionStorage.getItem("FavouriteStores") === null ? sessionStorage.setItem("FavouriteStores", "true") : sessionStorage.getItem("FavouriteStores");
+        const showFavourite = sessionStorage.getItem("FavouriteStores") === null ? sessionStorage.setItem("FavouriteStores", "true") : sessionStorage.getItem("FavouriteStores");
         if (showFavourite === "true"){
             sessionStorage.setItem("FavouriteStores", "false");
             setShowFavourite(false);
         } else {
             sessionStorage.setItem("FavouriteStores", "true");
             setShowFavourite(true);
-            addFavouriteStores(stores);
         }
     }
 
     useEffect(() => {
         refetch();
-    }, [URL,]);
+    }, [URL, refetch]);
     
-  	if (isLoading) return 'Laster inn...'
+    if (isLoading) return 'Laster inn...'
 
 	return (
 		<div>
@@ -157,13 +130,12 @@ function GetStores() {
                 <StandardButton text={'Favoritter'} state={showFavourite} handleClick={toggleFavourite}/>
             </div>
             <div className='StoreCardContainer'> 
-            {showFavourite
-                ? favouriteStores.map((store) => (
+            {showFavourite  ? (
+                    <FavoriteContainer />
+            ) : (
+                stores.map((store) => (
                     <StoreCard key={store.id} name={store.name} logoSource={store.logo} id={store.id.toString()} />
-                ))
-                : stores.map((store) => (
-                <StoreCard key={store.id} name={store.name} logoSource={store.logo} id={store.id.toString()} />
-                ))}
+                )))}
             </div>
         </div>
 	)

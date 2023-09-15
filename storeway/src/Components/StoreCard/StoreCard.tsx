@@ -17,10 +17,20 @@ const StoreCard = ({logoSource, name, id}: StoreProps) => {
     }
     function handleFavouriteClick() {
         //Sjekk om den er favoritt fra før av, dersom den er det, fjern den fra favoritter, hvis ikke, legg den til
-        if (localStorage.getItem(id) === null) {
-            localStorage.setItem(id, name);
+        const favorites = localStorage.getItem('FavoriteList');
+        if (favorites === null){
+            localStorage.setItem('FavoriteList', `${id}`)
         } else {
-            localStorage.removeItem(id);
+            const favoriteList = favorites.split(',');
+            
+            if (favoriteList.includes(id.toString())){
+                const index = favoriteList.indexOf(id);
+                favoriteList.splice(index, 1);
+            } else {
+                favoriteList.push(id);
+            }
+            const newStorrage = favoriteList.join(',');
+            newStorrage === '' ? localStorage.removeItem('FavoriteList') : localStorage.setItem('FavoriteList', newStorrage);
         }
     }
 
@@ -32,9 +42,9 @@ const StoreCard = ({logoSource, name, id}: StoreProps) => {
                 <img src={logoSource}></img>
             </div>
         </div>
-        <div className="favoriteDiv">
-            <Favorite handleClick={handleFavouriteClick} id={id}/>
-        </div>
+            <div className="favoriteDiv">
+                <Favorite handleClick={handleFavouriteClick} id={id}/>
+            </div>
         </div>
     )
 }

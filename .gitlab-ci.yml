@@ -31,3 +31,10 @@ Eslint:
   script:
     - npm run lint
   retry: 1
+
+Vitest: 
+  stage: test
+  needs: [build]
+  script: 
+    - npm run test
+  retry: 1

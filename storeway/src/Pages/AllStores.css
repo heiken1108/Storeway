@@ -1,15 +1,15 @@
 .Dropdowncontainer {
-  display: flex;
-  flex-direction: row;
-  align-items: space-between;
-  justify-content: flex-start;
-  margin-top: 20px;
-  margin-bottom: 20px;
+	display: flex;
+	flex-direction: row;
+	align-items: space-between;
+	justify-content: flex-start;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 .StoreCardContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
-    grid-gap:30px; 
-    justify-content: flex-start;
-    align-content: flex-start;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap: 30px;
+	justify-content: flex-start;
+	align-content: flex-start;
 }

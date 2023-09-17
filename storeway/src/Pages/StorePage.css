@@ -1,0 +1,35 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 3%;
+	height: 60vh;
+}
+
+.information-container {
+	display: flex;
+	flex-direction: column;
+	width: 40%;
+}
+
+.logo-name {
+	display: flex;
+	margin-bottom: 10px;
+	margin-bottom: 1px;
+}
+
+.logo-name img {
+	width: 60px; /* Adjust the logo width as needed */
+	margin-right: 10px;
+}
+
+.opening-hours {
+	margin-left: 20px;
+	font-size: 12px;
+	margin-bottom: 40px;
+}
+
+.company-info a {
+	margin-top: 60px;
+	color: black;
+}

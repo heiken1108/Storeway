@@ -17,13 +17,11 @@ export default function FavoriteData(props: IProps) {
 	}
 
 	return (
-		<div>
-			<StoreCard
-				key={data.data.id}
-				name={data.data.name}
-				logoSource={data.data.logo}
-				id={data.data.id}
-			/>
-		</div>
+		<StoreCard
+			key={data.data.id}
+			name={data.data.name}
+			logoSource={data.data.logo}
+			id={data.data.id}
+		/>
 	)
 }

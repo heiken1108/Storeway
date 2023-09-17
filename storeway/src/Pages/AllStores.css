@@ -3,13 +3,19 @@
 	flex-direction: row;
 	align-items: space-between;
 	justify-content: flex-start;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	margin: 20px;
 }
+
+.CardContainer {
+	display: flex;
+	justify-content: center;
+}
+
 .StoreCardContainer {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
-	justify-content: space-evenly;
-	align-content: space-evenly;
+	margin: 5px;
+	justify-content: center;
+	margin-bottom: 30px;
 }

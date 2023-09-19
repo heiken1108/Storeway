@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import FavoriteData from './FavoriteData'
 
-export default function FavoriteContainer() {
+interface IProps {
+	showLogo: boolean
+}
+
+export default function FavoriteContainer(props: IProps) {
 	const [ids, setIds] = useState<string[] | undefined>([])
 
 	useEffect(() => {
@@ -13,7 +17,9 @@ export default function FavoriteContainer() {
 	return (
 		<>
 			{ids ? (
-				ids.map(id => <FavoriteData id={id} key={id} />)
+				ids.map(id => (
+					<FavoriteData id={id} key={id} showLogo={props.showLogo} />
+				))
 			) : (
 				<h1>Ingen favoritter valgt</h1>
 			)}

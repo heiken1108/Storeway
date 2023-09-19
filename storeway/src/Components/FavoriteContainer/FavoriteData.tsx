@@ -3,6 +3,7 @@ import StoreCard from '../StoreCard/StoreCard'
 
 interface IProps {
 	id: string
+	showLogo: boolean
 }
 
 export default function FavoriteData(props: IProps) {
@@ -22,6 +23,7 @@ export default function FavoriteData(props: IProps) {
 			name={data.data.name}
 			logoSource={data.data.logo}
 			id={data.data.id}
+			showLogo={props.showLogo}
 		/>
 	)
 }

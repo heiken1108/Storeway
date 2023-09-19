@@ -6,14 +6,16 @@ interface StoreProps {
 	logoSource: string
 	name: string
 	id: string
+	showLogo: boolean
 }
 
-const StoreCard = ({ logoSource, name, id }: StoreProps) => {
+const StoreCard = ({ logoSource, name, id, showLogo }: StoreProps) => {
 	const navigate = useNavigate()
 
 	function handleStoreClick() {
 		navigate('/store/' + id)
 	}
+
 	function handleFavouriteClick() {
 		//Sjekk om den er favoritt fra før av, dersom den er det, fjern den fra favoritter, hvis ikke, legg den til
 		const favorites = localStorage.getItem('FavoriteList')
@@ -39,9 +41,11 @@ const StoreCard = ({ logoSource, name, id }: StoreProps) => {
 		<div className="backgroundBody">
 			<div className="mainBody" onClick={handleStoreClick}>
 				<h3 className="nameTitle">{name}</h3>
-				<div className="logoDiv">
-					<img src={logoSource}></img>
-				</div>
+				{showLogo && (
+					<div className="logoDiv">
+						<img src={logoSource} alt="Store Logo" />
+					</div>
+				)}
 			</div>
 			<div className="favoriteDiv">
 				<Favorite handleClick={handleFavouriteClick} id={id} />

@@ -7,6 +7,7 @@ import { StoresDropdown, CitiesDropdown } from '../data/Dropdown'
 import StandardButton from '../Components/Button/StandardButton'
 import Dropdown from '../Components/Dropwdown/Dropdown'
 import FavoriteContainer from '../Components/FavoriteContainer/FavoriteContainer'
+import ToggleSwitch from '../Components/ToggleSwitch/ToggleSwitch'
 
 const kassalappURL = 'https://kassal.app/api/v1/physical-stores?size=100'
 
@@ -36,6 +37,12 @@ export default function AllStores() {
 			? true
 			: false,
 	)
+
+	const [showLogo, setShowLogo] = useState(false)
+
+	const handleToggleChange = (isChecked: boolean) => {
+		setShowLogo(isChecked)
+	}
 
 	const { isLoading, refetch } = useQuery({
 		queryKey: ['Test'],
@@ -160,10 +167,14 @@ export default function AllStores() {
 					state={showFavourite}
 					handleClick={toggleFavourite}
 				/>
+				<div className="toggleTitle">
+					<p>Vis logo</p>
+				</div>
+				<ToggleSwitch onChange={handleToggleChange} defaultChecked={showLogo} />
 			</div>
 			<div className="StoreCardContainer">
 				{showFavourite ? (
-					<FavoriteContainer />
+					<FavoriteContainer showLogo={showLogo} />
 				) : (
 					stores.map(store => (
 						<StoreCard
@@ -171,6 +182,7 @@ export default function AllStores() {
 							name={store.name}
 							logoSource={store.logo}
 							id={store.id.toString()}
+							showLogo={showLogo}
 						/>
 					))
 				)}

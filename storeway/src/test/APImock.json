@@ -1,0 +1,79 @@
+{
+	"data": [
+		{
+			"id": "1",
+			"group": "MENY_NO",
+			"name": "MENY Manglerud",
+			"address": "Plogveien 6, 0679, Oslo",
+			"phone": "22 75 77 00",
+			"email": "butikksjef.manglerud@meny.no",
+			"fax": "22 75 77 01",
+			"logo": "https://cdn.kassal.app/7d38508b-65d3-4fdb-a259-ee49db95b55c/logos/Meny.svg",
+			"website": "https://meny.no/finn-butikk/meny-manglerud",
+			"detailUrl": "https://kassal.app/butikker/1-meny-manglerud-plogveien-6-0679-oslo",
+			"position": {
+				"lat": "59.89729008",
+				"lng": "10.81286081"
+			},
+			"openingHours": {
+				"monday": "08:00-21:00",
+				"tuesday": "08:00-21:00",
+				"wednesday": "08:00-21:00",
+				"thursday": "08:00-21:00",
+				"friday": "08:00-21:00",
+				"saturday": "09:00-19:00",
+				"sunday": null
+			}
+		},
+		{
+			"id": "420",
+			"group": "JOKER_NO",
+			"name": "Joker Ulvik",
+			"address": "Maritastykket 7, 5730, Ulvik",
+			"phone": "56526547",
+			"email": "joker.ulvik@joker.no",
+			"fax": "",
+			"logo": "https://cdn.kassal.app/7d38508b-65d3-4fdb-a259-ee49db95b55c/logos/Joker.svg",
+			"website": "https://joker.no/finn-butikk/joker-ulvik",
+			"detailUrl": "https://kassal.app/butikker/420-joker-ulvik-maritastykket-7-5730-ulvik",
+			"position": {
+				"lat": "60.56731166",
+				"lng": "6.91494178"
+			},
+			"openingHours": {
+				"monday": "09:00-18:00",
+				"tuesday": "09:00-18:00",
+				"wednesday": "09:00-18:00",
+				"thursday": "09:00-18:00",
+				"friday": "09:00-18:00",
+				"saturday": null,
+				"sunday": null
+			}
+		},
+		{
+			"id": "256",
+			"group": "JOKER_NO",
+			"name": "Joker Kilen",
+			"address": "Kaptein Dreyersveg 1509, 2283, Åsnes Finnskog",
+			"phone": "62 95 47 29",
+			"email": "joker.kilen@joker.no",
+			"fax": "62 95 46 20",
+			"logo": "https://cdn.kassal.app/7d38508b-65d3-4fdb-a259-ee49db95b55c/logos/Joker.svg",
+			"website": null,
+			"detailUrl": "https://kassal.app/butikker/256-joker-kilen-kaptein-dreyersveg-1509-2283-asnes-finnskog",
+			"position": {
+				"lat": "60.66723047",
+				"lng": "12.20228904"
+			},
+			"openingHours": {
+				"monday": "08:00-18:00",
+				"tuesday": "08:00-18:00",
+				"wednesday": "08:00-18:00",
+				"thursday": "08:00-18:00",
+				"friday": "08:00-18:00",
+				"saturday": "09:00-16:00",
+				"sunday": null
+			}
+		}
+	]
+}

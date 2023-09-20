@@ -183,12 +183,14 @@ export default function AllStores() {
 						handleStoreChange={handleStoreChange}
 						type={'store'}
 						label={sessionStorage.getItem('currentStoreCookie')}
+						disable={showFavourite}
 					/>
 					<Dropdown
 						cities={CitiesDropdown}
 						handleCityChange={handleCityChange}
 						type={'city'}
 						label={sessionStorage.getItem('currentLatCookie')}
+						disable={showFavourite}
 					/>
 				</div>
 				<div className="FavAndLogocontainer">

@@ -4,13 +4,27 @@ import { CitiesDropdown, StoresDropdown } from '../data/Dropdown'
 
 describe('Dropdown test', () => {
 	it('StoreDropdown render test', () => {
-		render(<Dropdown stores={StoresDropdown} type={'store'} label={null} />)
+		render(
+			<Dropdown
+				stores={StoresDropdown}
+				type={'store'}
+				label={null}
+				disable={false}
+			/>,
+		)
 		const dropdown = screen.getByRole('dropdown')
 
 		expect(dropdown).toBeInTheDocument()
 	})
 	it('LocationDropdown render test', () => {
-		render(<Dropdown cities={CitiesDropdown} type={'city'} label={null} />)
+		render(
+			<Dropdown
+				cities={CitiesDropdown}
+				type={'city'}
+				label={null}
+				disable={false}
+			/>,
+		)
 		const dropdown = screen.getByRole('dropdown')
 
 		expect(dropdown).toBeInTheDocument()
@@ -23,6 +37,7 @@ describe('Dropdown test', () => {
 				handleStoreChange={handleStoreChange}
 				type={'store'}
 				label={null}
+				disable={false}
 			/>,
 		)
 		const dropdownButton = getByRole('dropdown')
@@ -43,6 +58,7 @@ describe('Dropdown test', () => {
 				handleCityChange={handleCityChange}
 				type={'city'}
 				label={null}
+				disable={false}
 			/>,
 		)
 		const dropdownButton = getByRole('dropdown')

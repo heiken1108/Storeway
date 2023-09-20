@@ -9,6 +9,7 @@ interface IProps {
 	handleStoreChange?: (arg0: string) => void
 	handleCityChange?: (arg0: { lat: string; lng: string }) => void
 	label: string | null
+	disable: boolean
 }
 
 export default function Dropdown(props: IProps) {
@@ -28,34 +29,36 @@ export default function Dropdown(props: IProps) {
 		<div className="dropdown" role="dropdown">
 			{props.type === 'store' ? (
 				<div>
-					<button className="dropbtn">
+					<button className="dropbtn" disabled={props.disable}>
 						{getLabelFromValue(props.label, props.stores)}
 					</button>
 					<div className="dropdown-content">
-						{props.stores?.map(store => (
-							<a
-								key={store.value}
-								onClick={() => handleSelectedStoreChange(store.value)}
-							>
-								{store.label}
-							</a>
-						))}
+						{!props.disable &&
+							props.stores?.map(store => (
+								<a
+									key={store.value}
+									onClick={() => handleSelectedStoreChange(store.value)}
+								>
+									{store.label}
+								</a>
+							))}
 					</div>
 				</div>
 			) : (
 				<div>
-					<button className="dropbtn">
+					<button className="dropbtn" disabled={props.disable}>
 						{getLabelFromLat(props.label, props.cities)}
 					</button>
 					<div className="dropdown-content">
-						{props.cities?.map(city => (
-							<a
-								key={city.label}
-								onClick={() => handleSelectedCityChange(city.value)}
-							>
-								{city.label}
-							</a>
-						))}
+						{!props.disable &&
+							props.cities?.map(city => (
+								<a
+									key={city.label}
+									onClick={() => handleSelectedCityChange(city.value)}
+								>
+									{city.label}
+								</a>
+							))}
 					</div>
 				</div>
 			)}

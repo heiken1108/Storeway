@@ -13,7 +13,7 @@ interface IProps {
 
 export default function Dropdown(props: IProps) {
 	function handleSelectedStoreChange(option: string) {
-		if (props.handleStoreChange && option) {
+		if (props.handleStoreChange) {
 			props.handleStoreChange(option)
 		}
 	}

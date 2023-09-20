@@ -44,7 +44,7 @@ export default function AllStores() {
 		setShowLogo(isChecked)
 	}
 
-	const { isLoading, refetch } = useQuery({
+	const { isLoading, refetch, isError } = useQuery({
 		queryKey: ['Test'],
 		queryFn: () =>
 			fetch(URL, {
@@ -146,6 +146,8 @@ export default function AllStores() {
 	}, [URL, refetch])
 
 	if (isLoading) return 'Laster inn...'
+
+	if (isError) return 'Noe gikk galt...'
 
 	return (
 		<div>

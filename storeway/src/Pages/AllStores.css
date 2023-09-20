@@ -9,7 +9,7 @@
 .Filtercontainer,
 .FavAndLogocontainer {
 	display: flex;
-	flex-direction: column;
+	gap: 20px;
 }
 
 .FavAndLogocontainer {
@@ -33,6 +33,7 @@
 .toggleTitle {
 	display: flex;
 	flex-direction: row;
+	margin-left: 20px;
 }
 
 .loadingContainer {
@@ -77,4 +78,19 @@
 
 .errorText {
 	font-size: 18px;
+}
+
+@media screen and (max-width: 670px) {
+	.Filtercontainer,
+	.FavAndLogocontainer {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+@media screen and (max-width: 435px) {
+	.Dropdowncontainer {
+		flex-direction: column;
+		gap: 20px;
+	}
 }

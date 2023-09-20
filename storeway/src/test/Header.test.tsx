@@ -1,8 +1,10 @@
 import { render } from '@testing-library/react'
 import App from '../App'
 
-test('Header', () => {
-	const { getByText } = render(<App />)
-	const heading = getByText('🛒 Storeway')
-	expect(heading).toBeInTheDocument()
+describe('Header test', () => {
+	it('Test if Header renders', () => {
+		const { getByText } = render(<App />)
+		const heading = getByText('🛒 Storeway')
+		expect(heading).toBeInTheDocument()
+	})
 })

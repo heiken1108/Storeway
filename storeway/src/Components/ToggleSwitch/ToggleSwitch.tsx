@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './ToggleSwitch.css'
 
 interface ToggleSwitchProps {
@@ -6,10 +6,10 @@ interface ToggleSwitchProps {
 	defaultChecked?: boolean
 }
 
-const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
+const ToggleSwitch = ({
 	onChange,
 	defaultChecked = true,
-}) => {
+}: ToggleSwitchProps) => {
 	const [isChecked, setIsChecked] = useState(defaultChecked)
 
 	const handleToggle = () => {

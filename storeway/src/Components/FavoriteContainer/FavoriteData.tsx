@@ -19,7 +19,7 @@ export default function FavoriteData(props: IProps) {
 	}
 
 	if (!data) {
-		return <p>❌</p> //Denne kommer vel aldri til bli kalt, for da har hele API-et feila?
+		return <p>❌</p>
 	}
 
 	return (

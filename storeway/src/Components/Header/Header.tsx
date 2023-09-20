@@ -5,7 +5,7 @@ export default function Header() {
 	const navigate = useNavigate()
 
 	function handleNavHome() {
-		navigate('/')
+		navigate('/project1/')
 	}
 
 	return (

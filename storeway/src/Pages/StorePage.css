@@ -20,7 +20,7 @@
 }
 
 .logo-name img {
-	width: 60px; /* Adjust the logo width as needed */
+	width: 60px;
 	margin-right: 10px;
 }
 
@@ -35,7 +35,6 @@
 	color: black;
 }
 
-//Nå er denne i både AllStores og Storepage sin CSS. Burde man heller bare få StorePage.tsx til å importere AllStores.css?
 .loadingContainer {
 	width: 100vw;
 	height: 100vh;

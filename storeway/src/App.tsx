@@ -13,8 +13,8 @@ function App() {
 			<Header />
 			<QueryClientProvider client={queryClient}>
 				<Routes>
-					<Route path="/" element={<AllStores />} />
-					<Route path="/store/:storeID" element={<StorePage />} />
+					<Route path="/project1" element={<AllStores />} />
+					<Route path="/project1/store/:storeID" element={<StorePage />} />
 				</Routes>
 			</QueryClientProvider>
 		</Router>

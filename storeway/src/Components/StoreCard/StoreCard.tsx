@@ -40,10 +40,12 @@ const StoreCard = ({ logoSource, name, id, showLogo }: StoreProps) => {
 	return (
 		<div className="backgroundBody">
 			<div className="mainBody" onClick={handleStoreClick}>
-				<h3 className="nameTitle">{name}</h3>
+				<h3 className="nameTitle" role="nameItem">
+					{name}
+				</h3>
 				{showLogo && (
 					<div className="logoDiv">
-						<img src={logoSource} alt="Store Logo" />
+						<img src={logoSource} alt="Store Logo" role="imgItem" />
 					</div>
 				)}
 			</div>

@@ -9,6 +9,7 @@ interface IProps {
 export default function StandardButton(props: IProps) {
 	return (
 		<button
+			role="standardButton"
 			className={props.state == false ? 'standardButton' : 'favouriteButton'}
 			onClick={props.handleClick}
 		>

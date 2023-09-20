@@ -28,6 +28,7 @@ export default function Favorite(props: MyProp) {
 	return (
 		<IonIcon
 			name={isClick ? 'heart' : 'heart-outline'}
+			role="heartIcon"
 			onClick={() => click()}
 			className="heartIcon"
 		/>

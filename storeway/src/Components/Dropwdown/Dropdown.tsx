@@ -25,7 +25,7 @@ export default function Dropdown(props: IProps) {
 	}
 
 	return (
-		<div className="dropdown">
+		<div className="dropdown" role="dropdown">
 			{props.type === 'store' ? (
 				<div>
 					<button className="dropbtn">

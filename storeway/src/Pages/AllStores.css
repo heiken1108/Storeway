@@ -1,9 +1,19 @@
 .Dropdowncontainer {
 	display: flex;
 	flex-direction: row;
-	align-items: space-between;
+	align-items: center;
+	justify-content: space-between;
 	margin: 20px;
-	width: 100%;
+}
+
+.Filtercontainer,
+.FavAndLogocontainer {
+	display: flex;
+	gap: 20px;
+}
+
+.FavAndLogocontainer {
+	justify-content: right;
 }
 
 .CardContainer {
@@ -21,7 +31,9 @@
 }
 
 .toggleTitle {
-	margin-left: auto;
+	display: flex;
+	flex-direction: row;
+	margin-left: 20px;
 }
 
 .loadingContainer {
@@ -66,4 +78,19 @@
 
 .errorText {
 	font-size: 18px;
+}
+
+@media screen and (max-width: 670px) {
+	.Filtercontainer,
+	.FavAndLogocontainer {
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+@media screen and (max-width: 435px) {
+	.Dropdowncontainer {
+		flex-direction: column;
+		gap: 20px;
+	}
 }

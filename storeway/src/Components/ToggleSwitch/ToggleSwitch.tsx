@@ -8,7 +8,7 @@ interface ToggleSwitchProps {
 
 const ToggleSwitch: React.FC<ToggleSwitchProps> = ({
 	onChange,
-	defaultChecked = false,
+	defaultChecked = true,
 }) => {
 	const [isChecked, setIsChecked] = useState(defaultChecked)
 

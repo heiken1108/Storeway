@@ -38,10 +38,17 @@ export default function AllStores() {
 			: false,
 	)
 
-	const [showLogo, setShowLogo] = useState(false)
+	const [showLogo, setShowLogo] = useState(
+		sessionStorage.getItem('LogoState') === null
+			? true
+			: sessionStorage.getItem('LogoState') === 'false'
+			? false
+			: true,
+	)
 
 	const handleToggleChange = (isChecked: boolean) => {
 		setShowLogo(isChecked)
+		sessionStorage.setItem('LogoState', isChecked.toString())
 	}
 
 	const { isLoading, refetch, isError } = useQuery({

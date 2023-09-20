@@ -1,9 +1,19 @@
 .Dropdowncontainer {
 	display: flex;
 	flex-direction: row;
-	align-items: space-between;
+	align-items: center;
+	justify-content: space-between;
 	margin: 20px;
-	width: 100%;
+}
+
+.Filtercontainer,
+.FavAndLogocontainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.FavAndLogocontainer {
+	justify-content: right;
 }
 
 .CardContainer {
@@ -21,7 +31,8 @@
 }
 
 .toggleTitle {
-	margin-left: auto;
+	display: flex;
+	flex-direction: row;
 }
 
 .loadingContainer {

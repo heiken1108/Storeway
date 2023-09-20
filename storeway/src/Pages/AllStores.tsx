@@ -177,27 +177,34 @@ export default function AllStores() {
 	return (
 		<div>
 			<div className="Dropdowncontainer">
-				<Dropdown
-					stores={StoresDropdown}
-					handleStoreChange={handleStoreChange}
-					type={'store'}
-					label={sessionStorage.getItem('currentStoreCookie')}
-				/>
-				<Dropdown
-					cities={CitiesDropdown}
-					handleCityChange={handleCityChange}
-					type={'city'}
-					label={sessionStorage.getItem('currentLatCookie')}
-				/>
-				<StandardButton
-					text={'Favoritter'}
-					state={showFavourite}
-					handleClick={toggleFavourite}
-				/>
-				<div className="toggleTitle">
-					<p>Vis logo</p>
+				<div className="Filtercontainer">
+					<Dropdown
+						stores={StoresDropdown}
+						handleStoreChange={handleStoreChange}
+						type={'store'}
+						label={sessionStorage.getItem('currentStoreCookie')}
+					/>
+					<Dropdown
+						cities={CitiesDropdown}
+						handleCityChange={handleCityChange}
+						type={'city'}
+						label={sessionStorage.getItem('currentLatCookie')}
+					/>
 				</div>
-				<ToggleSwitch onChange={handleToggleChange} defaultChecked={showLogo} />
+				<div className="FavAndLogocontainer">
+					<StandardButton
+						text={'Favoritter'}
+						state={showFavourite}
+						handleClick={toggleFavourite}
+					/>
+					<div className="toggleTitle">
+						<p>Vis logo</p>
+						<ToggleSwitch
+							onChange={handleToggleChange}
+							defaultChecked={showLogo}
+						/>
+					</div>
+				</div>
 			</div>
 			<div className="StoreCardContainer">
 				{showFavourite ? (

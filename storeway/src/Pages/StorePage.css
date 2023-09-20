@@ -34,3 +34,18 @@
 	margin-top: 60px;
 	color: black;
 }
+
+//Nå er denne i både AllStores og Storepage sin CSS. Burde man heller bare få StorePage.tsx til å importere AllStores.css?
+.loadingContainer {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.lds-default2 {
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}

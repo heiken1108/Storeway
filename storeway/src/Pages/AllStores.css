@@ -23,3 +23,47 @@
 .toggleTitle {
 	margin-left: auto;
 }
+
+.loadingContainer {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.lds-default2 {
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	position: absolute;
+}
+
+.ErrorPage {
+	display: flex;
+	position: absolute;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	left: 0;
+	margin: 0;
+}
+
+.errorMessage {
+	text-align: center;
+	padding: 20px;
+	background-color: #ffdddd;
+	border: 1px solid #ff0000;
+	border-radius: 5px;
+}
+
+.errorIcon {
+	font-size: 48px;
+	margin-bottom: 10px;
+}
+
+.errorText {
+	font-size: 18px;
+}

@@ -9,6 +9,7 @@ import {
 	QueryClientProvider,
 	useQuery,
 } from '@tanstack/react-query'
+import LoadingAnimation from '../Components/LoadingAnimation/LoadingAnimation'
 
 export default function Storepage() {
 	return (
@@ -77,7 +78,14 @@ function GetStore() {
 		}
 	}
 
-	if (isLoading) return <div>Loading...</div>
+	if (isLoading)
+		return (
+			<div className="loadingContainer">
+				<div className="lds-default2">
+					<LoadingAnimation />
+				</div>
+			</div>
+		)
 
 	return (
 		<div className="container">

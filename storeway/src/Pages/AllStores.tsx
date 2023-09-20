@@ -8,6 +8,7 @@ import StandardButton from '../Components/Button/StandardButton'
 import Dropdown from '../Components/Dropwdown/Dropdown'
 import FavoriteContainer from '../Components/FavoriteContainer/FavoriteContainer'
 import ToggleSwitch from '../Components/ToggleSwitch/ToggleSwitch'
+import LoadingAnimation from '../Components/LoadingAnimation/LoadingAnimation'
 
 const kassalappURL = 'https://kassal.app/api/v1/physical-stores?size=100'
 
@@ -152,9 +153,26 @@ export default function AllStores() {
 		refetch()
 	}, [URL, refetch])
 
-	if (isLoading) return 'Laster inn...'
+	if (isLoading)
+		return (
+			<div className="loadingContainer">
+				<div className="lds-default2">
+					<LoadingAnimation />
+				</div>
+			</div>
+		)
 
-	if (isError) return 'Noe gikk galt...'
+	if (isError)
+		return (
+			<div className="ErrorPage">
+				<div id="apiErrorMessage" className="errorMessage">
+					<div className="errorIcon">❌</div>
+					<div className="errorText">
+						Noe gikk galt. API-et kunne ikke lastes.
+					</div>
+				</div>
+			</div>
+		)
 
 	return (
 		<div>

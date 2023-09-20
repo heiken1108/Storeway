@@ -1,4 +1,5 @@
 import useFavoriteStore from '../../hooks/useFavoriteStore'
+import LoadingAnimation from '../LoadingAnimation/LoadingAnimation'
 import StoreCard from '../StoreCard/StoreCard'
 
 interface IProps {
@@ -10,11 +11,15 @@ export default function FavoriteData(props: IProps) {
 	const { data, isLoading } = useFavoriteStore(props.id)
 
 	if (isLoading) {
-		return <p>Laster...</p>
+		return (
+			<div className="backgroundBody">
+				<LoadingAnimation />
+			</div>
+		)
 	}
 
 	if (!data) {
-		return <p>Fant ikke butikken.</p>
+		return <p>❌</p> //Denne kommer vel aldri til bli kalt, for da har hele API-et feila?
 	}
 
 	return (

@@ -25,7 +25,7 @@ const StoreCard = ({ logoSource, name, id, showLogo }: StoreProps) => {
 			const favoriteList = favorites.split(',')
 
 			if (favoriteList.includes(id.toString())) {
-				const index = favoriteList.indexOf(id)
+				const index = favoriteList.indexOf(id.toString())
 				favoriteList.splice(index, 1)
 			} else {
 				favoriteList.push(id)

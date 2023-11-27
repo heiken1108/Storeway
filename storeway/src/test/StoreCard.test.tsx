@@ -69,7 +69,6 @@ describe('StoreCard test', () => {
 		expect(name.textContent).toBe('MENY Manglerud')
 
 		//Teste om storecard har riktig logo
-		// expect(screen.getByRole('imgItem')).toBe(null)
 		const img = screen.queryByRole('imgItem')
 		expect(img).toBe(null)
 	})

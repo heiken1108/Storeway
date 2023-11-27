@@ -17,7 +17,6 @@ const StoreCard = ({ logoSource, name, id, showLogo }: StoreProps) => {
 	}
 
 	function handleFavouriteClick() {
-		//Sjekk om den er favoritt fra før av, dersom den er det, fjern den fra favoritter, hvis ikke, legg den til
 		const favorites = localStorage.getItem('FavoriteList')
 		if (favorites === null) {
 			localStorage.setItem('FavoriteList', `${id}`)

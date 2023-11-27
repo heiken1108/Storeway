@@ -6,10 +6,11 @@
 	text-align: center;
 	font-family: 'Segoe UI', monospace;
 	font-weight: bold;
-	color: black;
+	color: white;
 	font-size: 18px;
 	cursor: pointer;
 	margin-right: 5px;
+	background: rgb(40, 112, 148);
 }
 
 .dropdown {
@@ -25,20 +26,20 @@
 	text-align: center;
 	font-family: 'Segoe UI', monospace;
 	font-weight: bold;
-	background-color: #61676a;
+	background-color: lightgray;
 	font-size: 18px;
 	margin-right: 5px;
 	cursor: not-allowed;
 }
 
 .dropbtn[disabled]:hover {
-	background-color: #61676a !important;
+	background-color: lightgray !important;
 }
 
 .dropdown-content {
 	display: none;
 	position: absolute;
-	background-color: #f9f9f9;
+	background-color: white;
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 	z-index: 1;
@@ -54,7 +55,7 @@
 }
 
 .dropdown-content a:hover {
-	background-color: #f1f1f1;
+	background-color: lightgray;
 }
 
 .dropdown:hover .dropdown-content {
@@ -62,6 +63,5 @@
 }
 
 .dropdown:hover .dropbtn {
-	background-color: #3e8e41;
-	background: #c3c2c2;
+	background: rgb(21, 101, 192);
 }

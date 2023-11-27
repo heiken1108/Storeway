@@ -33,6 +33,29 @@
 .company-info a {
 	margin-top: 60px;
 	color: black;
+	display: block;
+	max-width: 100%;
+	white-space: normal;
+	word-wrap: break-word;
+}
+
+.company-info a,
+.company-info p {
+	font-size: 1.2rem;
+}
+
+@media screen and (max-width: 400px) {
+	.logo-name {
+		margin-bottom: 20px;
+	}
+	.opening-hours {
+		margin-left: 0;
+		margin-bottom: 20px;
+	}
+	.company-info a,
+	.company-info p {
+		font-size: 1rem;
+	}
 }
 
 .loadingContainer {

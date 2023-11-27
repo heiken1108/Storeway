@@ -19,8 +19,11 @@ const ToggleSwitch = ({
 	}
 
 	return (
-		<div className={`toggle-switch ${isChecked ? 'checked' : ''}`}>
-			<div className="toggle-switch-bottom" onClick={handleToggle}></div>
+		<div
+			onClick={handleToggle}
+			className={`toggle-switch ${isChecked ? 'checked' : ''}`}
+		>
+			<div className="toggle-switch-bottom"></div>
 		</div>
 	)
 }

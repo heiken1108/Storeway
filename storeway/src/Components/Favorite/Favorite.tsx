@@ -6,6 +6,11 @@ interface MyProp {
 	handleClick: () => void
 	id: string
 }
+/**
+ * A heart icon used to favorite a store
+ * @param props consisting of handleClick and the id of the store which is favorited
+ * @returns a heart icon which is used to favorite a store
+ */
 export default function Favorite(props: MyProp) {
 	const [isClick, setClick] = useState(false)
 	function click() {

@@ -8,7 +8,14 @@ interface StoreProps {
 	id: string
 	showLogo: boolean
 }
-
+/**
+ * This component is a storecard which contains a store
+ * @param logoSource the source of the logo
+ * @param name the name of the store
+ * @param id the id of the store
+ * @param showLogo a boolean value which determines if the logo should be shown
+ * @returns a storecard containing the store
+ */
 const StoreCard = ({ logoSource, name, id, showLogo }: StoreProps) => {
 	const navigate = useNavigate()
 

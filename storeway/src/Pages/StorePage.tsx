@@ -11,6 +11,10 @@ import {
 } from '@tanstack/react-query'
 import LoadingAnimation from '../Components/LoadingAnimation/LoadingAnimation'
 
+/**
+ * The page which displays the information about a store
+ * @returns a page which displays the information about a store
+ */
 export default function Storepage() {
 	return (
 		<QueryClientProvider client={queryClient}>

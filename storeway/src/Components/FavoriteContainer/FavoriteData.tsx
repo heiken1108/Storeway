@@ -6,7 +6,11 @@ interface IProps {
 	id: string
 	showLogo: boolean
 }
-
+/**
+ * A storecard containing the favorited store
+ * @param props consisting of id and showLogo
+ * @returns a storecard containing the favorited store
+ */
 export default function FavoriteData(props: IProps) {
 	const { data, isLoading } = useFavoriteStore(props.id)
 

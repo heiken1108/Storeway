@@ -12,6 +12,10 @@ import LoadingAnimation from '../Components/LoadingAnimation/LoadingAnimation'
 
 const kassalappURL = 'https://kassal.app/api/v1/physical-stores?size=100'
 
+/**
+ * The page which contains all the stores
+ * @returns a page which contains all the stores
+ */
 export default function AllStores() {
 	let kassalappURLTemp = kassalappURL
 	const [stores, setStores] = useState<Store[]>([])

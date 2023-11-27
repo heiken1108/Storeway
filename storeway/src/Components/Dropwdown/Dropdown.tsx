@@ -11,7 +11,11 @@ interface IProps {
 	label: string | null
 	disable: boolean
 }
-
+/**
+ * A dropdown menu used to select a store or city
+ * @param props consisting of stores, cities, type, handleStoreChange, handleCityChange, label and disable
+ * @returns a dropdown menu used to select a store or city
+ */
 export default function Dropdown(props: IProps) {
 	function handleSelectedStoreChange(option: string) {
 		if (props.handleStoreChange) {

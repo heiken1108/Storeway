@@ -20,7 +20,7 @@ const StoreCard = ({ logoSource, name, id, showLogo }: StoreProps) => {
 	const navigate = useNavigate()
 
 	function handleStoreClick() {
-		navigate('/project1/store/' + id)
+		navigate('/store/' + id)
 	}
 
 	function handleFavouriteClick() {

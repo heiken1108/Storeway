@@ -9,7 +9,7 @@ export default function Header() {
 	const navigate = useNavigate()
 
 	function handleNavHome() {
-		navigate('/project1/')
+		navigate('/')
 	}
 	return (
 		<div className="Header">

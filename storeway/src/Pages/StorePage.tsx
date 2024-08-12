@@ -71,13 +71,13 @@ function GetStore() {
 			let nextID: number
 			if (storeID) {
 				nextID = Number(storeID) + 1 > 4323 ? 1 : Number(storeID) + 1
-				navigate('/project1/store/' + nextID)
+				navigate('/store/' + nextID)
 			}
 		} else {
 			let nextID: number
 			if (storeID) {
 				nextID = Number(storeID) - 1 < 1 ? 4323 : Number(storeID) - 1
-				navigate('/project1/store/' + nextID)
+				navigate('/store/' + nextID)
 			}
 		}
 	}
